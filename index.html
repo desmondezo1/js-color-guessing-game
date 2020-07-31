@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js Color game</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="main">
+        <h1 class="diplayquestion">Guess this color</h1>
+        <h1> <span class="colorcode">RGB</span></span></h1>
+        <h3><span id="cScore">0</span>/<span id="maxScore">10</span> stage :<span id="cStage"></span></h3>
+        <div class="result" id="result">Guess Again</div>
+        <div class="container">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+
+        </div>
+        <button onClick="resetGame();" class="reset-btn">reset</button>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
