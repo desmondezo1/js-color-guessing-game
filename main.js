@@ -22,11 +22,12 @@ function randColorGenerator() {
 function genBoxColors() {
 
     //let shape = document.getElementsByClassName("box");
-    for (i = 0; i < shape.length; i++) {
+    for (let i = 0; i < shape.length; i++) {
 
         shape[i].style.background = randColorGenerator();
         //set box id
         shape[i].id = i;
+
     }
 
     let randNum = Math.floor(Math.random() * shape.length);
@@ -40,30 +41,36 @@ function genBoxColors() {
 function click(selected) {
 
 
+
     //if box hasn't been selected run
 
-    for (let i = 0; i < shape.length; i++) {
 
+    //ERROR IS HERE.... look at the loop.. there is an issue with it, 
+
+    for (let i = 0; i < shape.length; i++) {
+        console.log(i);
         shape[i].addEventListener("click", function () {
 
             if (selected) {
                 selected = false;
-                currentStage++;
+                currentStage += 1;
                 updateScore(currentStage);
                 nextStage();
                 checkGame();
 
             } else {
-
+                console.log(i);
                 let clicked = shape[i].style.background;
                 selected = true;
                 checkAnswer(clicked);
-                ++currentStage;
+                currentStage += 1;
                 updateScore(currentStage);
                 checkGame();
 
             }
-        })
+        });
+
+
     }
 
 }
@@ -82,7 +89,7 @@ function checkAnswer(answer) {
     if (correct == answer) {
         //check if its the correct answer the  run correct function
         displayCorrect();
-        ++score;
+        score += 1;
         checkGame();
     } else {
         //else run the wrong answer function
@@ -124,7 +131,6 @@ function changeBoxColorGrey() {
         }
 
 
-
     }
 }
 
@@ -159,9 +165,12 @@ function resetGame() {
     score = 0;
     currentStage = 0;
     updateScore(currentStage);
+
     for (let i = 0; i < shape.length; i++) {
         shape[i].style.display = "block";
+
     }
+
     genBoxColors();
 
 };
@@ -179,8 +188,10 @@ function updateScore(currentStage) {
 function checkGame() {
     if (currentStage == maxStage) {
         //remove boxes display
+
         for (let i = 0; i < shape.length; i++) {
             shape[i].style.display = "none";
+
         }
         // diplay Game Over
         let container = document.getElementsByClassName("container");
